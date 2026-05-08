@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StudyBox UCA | Reserva de boxes</title>
+<style>
+:root{
+  --azul:#061a40;--azul2:#0b2b63;--celeste:#3b82f6;--gris:#eef3f8;--texto:#102033;
+  --libre:#16a34a;--ocupado:#dc2626;--reservado:#f59e0b;--mesa:#8b5cf6;
+}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(135deg,#071735,#0b2b63);color:white;min-height:100vh}.app{max-width:1400px;margin:auto;padding:24px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.logo{width:48px;height:48px;border-radius:16px;background:white;color:var(--azul);display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 10px 25px #0004}.brand h1{margin:0;font-size:26px}.brand p{margin:2px 0 0;color:#cbd5e1}.actions{display:flex;gap:10px;flex-wrap:wrap}button,.btn{border:0;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;transition:.2s;background:#ffffff;color:var(--azul);box-shadow:0 8px 20px #0002}button:hover{transform:translateY(-1px)}.primary{background:var(--celeste);color:white}.ghost{background:#ffffff1a;color:white;border:1px solid #ffffff30}.layout{display:grid;grid-template-columns:1.7fr .8fr;gap:20px}.card{background:#ffffff12;border:1px solid #ffffff25;border-radius:28px;box-shadow:0 18px 40px #0003;backdrop-filter:blur(14px);padding:18px}.mapHeader{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}.mapHeader h2,.panel h2{margin:0;font-size:20px}.legend{display:flex;gap:8px;flex-wrap:wrap}.pill{padding:8px 10px;border-radius:999px;background:#ffffff18;font-size:13px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}.d-libre{background:var(--libre)}.d-ocupado{background:var(--ocupado)}.d-reservado{background:var(--reservado)}.d-mesa{background:var(--mesa)}.mapWrap{background:#eab308;border-radius:22px;padding:18px;overflow:auto;border:4px solid #111827;position:relative}.floor{position:relative;width:980px;height:640px;background:#facc15;border:3px solid #111827;clip-path:polygon(15% 0,89% 0,89% 20%,100% 20%,100% 82%,84% 82%,84% 100%,0 100%,0 58%,15% 58%);}.street{position:absolute;color:#fff8;font-weight:900;font-size:18px;letter-spacing:.5px}.montevideo{top:6px;left:310px}.pellegrini{bottom:18px;left:260px}.iriondo{left:-26px;top:350px;transform:rotate(-90deg)}.crespo{right:-18px;top:260px;transform:rotate(90deg)}.corridor{position:absolute;background:#fde04780;border:2px dashed #ca8a04;border-radius:14px}.c1{left:185px;top:175px;width:575px;height:145px}.c2{left:185px;top:320px;width:420px;height:145px}.c3{left:0;bottom:0;width:650px;height:120px}.zone{position:absolute;border:3px solid #1f2937;background:#fff7;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:8px;font-weight:900;color:#111827;cursor:pointer;transition:.2s;box-shadow:inset 0 0 0 2px #ffffff55}.zone:hover{transform:scale(1.03);z-index:5}.box{background:#ffffffcc}.box.libre{border-color:var(--libre)}.box.ocupado{border-color:var(--ocupado);background:#fee2e2}.box.reservado{border-color:var(--reservado);background:#fef3c7}.mesa{background:#ede9fe;border-color:var(--mesa);font-size:14px}.selected{outline:5px solid #38bdf8;z-index:10}.door{position:absolute;background:#111827;color:white;border-radius:8px;padding:6px 8px;font-size:12px;font-weight:900}.arrow{position:absolute;color:#166534;font-size:34px;font-weight:900}.stairs{position:absolute;border:3px solid #111827;background:#ffffff70;border-radius:8px;color:#111827;font-weight:900;display:grid;place-items:center}.side{display:flex;flex-direction:column;gap:20px}.panel{height:fit-content}.statusTitle{display:flex;justify-content:space-between;align-items:center;gap:8px}.statusBadge{font-size:12px;padding:7px 10px;border-radius:999px;background:#ffffff20}.infoBox{background:white;color:var(--texto);border-radius:22px;padding:18px;margin-top:12px}.infoBox h3{margin:0 0 8px;font-size:22px}.infoRow{display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding:10px 0;gap:10px}.infoRow:last-child{border-bottom:0}.state{font-weight:900}.libreText{color:var(--libre)}.ocupadoText{color:var(--ocupado)}.reservadoText{color:var(--reservado)}input,select{width:100%;padding:13px;border:1px solid #dbe3ef;border-radius:14px;margin:8px 0 12px;font-size:15px}.reserveBtn{width:100%;margin-top:4px}.miniList{display:grid;gap:10px;margin-top:12px}.mini{display:flex;justify-content:space-between;align-items:center;background:#ffffff14;border:1px solid #ffffff25;border-radius:16px;padding:12px}.mini strong{display:block}.mini span{font-size:12px;color:#dbeafe}.adminToggle{position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;background:#ffffff;color:var(--azul);z-index:20}.modal{display:none;position:fixed;inset:0;background:#0009;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalBox{background:#fff;color:#102033;border-radius:26px;padding:22px;width:min(520px,100%)}.modalBox h2{margin-top:0}.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%);background:#111827;color:white;padding:14px 18px;border-radius:999px;box-shadow:0 15px 35px #0005;display:none;z-index:50}.toast.show{display:block}@media(max-width:980px){.layout{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.mapWrap{padding:10px}.floor{transform-origin:top left;transform:scale(.78);margin-bottom:-140px}.brand h1{font-size:22px}}@media(max-width:650px){.app{padding:14px}.floor{transform:scale(.52);margin-bottom:-300px}.actions button{padding:10px 12px}.adminGrid{grid-template-columns:1fr}.card{border-radius:20px}.mapHeader{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="logo">SB</div><div><h1>StudyBox UCA</h1><p>Reserva inteligente de boxes y espacios de estudio</p></div></div>
+    <div class="actions"><button class="ghost" onclick="filterStatus('todos')">Todos</button><button onclick="filterStatus('libre')">Libres</button><button onclick="filterStatus('ocupado')">Ocupados</button><button class="primary" onclick="openAdmin()">Panel admin</button></div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <div class="mapHeader"><h2>Mapa interactivo · Biblioteca subsuelo</h2><div class="legend"><span class="pill"><i class="dot d-libre"></i>Libre</span><span class="pill"><i class="dot d-reservado"></i>Reservado</span><span class="pill"><i class="dot d-ocupado"></i>Ocupado</span><span class="pill"><i class="dot d-mesa"></i>Mesas</span></div></div>
+      <div class="mapWrap">
+        <div class="floor" id="floor">
+          <div class="street montevideo">Calle Montevideo</div><div class="street pellegrini">Av. Pellegrini</div><div class="street iriondo">Calle Iriondo</div><div class="street crespo">Calle Crespo</div>
+          <div class="corridor c1"></div><div class="corridor c2"></div><div class="corridor c3"></div>
+          <div class="stairs" style="left:55px;top:390px;width:105px;height:110px">Escalera</div><div class="stairs" style="left:330px;top:205px;width:90px;height:90px">Baños</div><div class="door" style="right:165px;bottom:12px">Acceso Pellegrini</div>
+          <div class="arrow" style="left:260px;top:170px">➜</div><div class="arrow" style="left:510px;top:170px">➜</div><div class="arrow" style="left:690px;top:175px">⬅</div><div class="arrow" style="left:490px;top:300px">⬅</div><div class="arrow" style="left:600px;top:270px">⬇</div><div class="arrow" style="left:610px;top:400px">⬇</div><div class="arrow" style="left:250px;bottom:50px">⬅</div>
+          <div id="zones"></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <section class="card panel">
+        <div class="statusTitle"><h2>Detalle del espacio</h2><span class="statusBadge" id="liveClock">Actualizando...</span></div>
+        <div class="infoBox" id="detail"><h3>Seleccioná un box</h3><p>Tocá un espacio del mapa para ver disponibilidad, capacidad y reservar.</p></div>
+      </section>
+      <section class="card panel"><h2>Próximas reservas</h2><div class="miniList" id="reservationList"></div></section>
+    </aside>
+  </main>
+</div>
+<button class="adminToggle" onclick="openAdmin()">⚙</button>
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="adminModal">
+  <div class="modalBox">
+    <h2>Panel administrativo</h2>
+    <p>Modificá el estado de cada espacio para simular disponibilidad en tiempo real.</p>
+    <div class="adminGrid"><div><label>Espacio</label><select id="adminBox"></select></div><div><label>Estado</label><select id="adminState"><option value="libre">Libre</option><option value="reservado">Reservado</option><option value="ocupado">Ocupado</option></select></div></div>
+    <label>Nota visible</label><input id="adminNote" placeholder="Ej: Reservado para grupo de Marketing" />
+    <div class="actions"><button class="primary" onclick="saveAdmin()">Guardar cambio</button><button onclick="closeAdmin()">Cerrar</button></div>
+  </div>
+</div>
+
+<script>
+const spaces=[
+{id:'box1',name:'Box 1',type:'box',status:'libre',cap:4,x:20,y:45,w:105,h:120,note:'Disponible ahora'},
+{id:'box2',name:'Box 2',type:'box',status:'ocupado',cap:4,x:130,y:45,w:105,h:120,note:'Ocupado hasta 17:30'},
+{id:'box3',name:'Box 3',type:'box',status:'libre',cap:4,x:240,y:45,w:105,h:120,note:'Disponible ahora'},
+{id:'mesas1',name:'Mesas individuales A',type:'mesa',status:'libre',cap:12,x:355,y:45,w:245,h:120,note:'Zona silenciosa'},
+{id:'box5',name:'Box 5',type:'box',status:'reservado',cap:6,x:610,y:45,w:130,h:120,note:'Reservado 18:00'},
+{id:'box6',name:'Box 6',type:'box',status:'libre',cap:6,x:785,y:205,w:135,h:135,note:'Disponible ahora'},
+{id:'box7',name:'Box 7',type:'box',status:'ocupado',cap:4,x:805,y:385,w:120,h:120,note:'Ocupado hasta 19:00'},
+{id:'box4',name:'Box 4',type:'box',status:'reservado',cap:3,x:685,y:445,w:110,h:85,note:'Reservado 17:00'},
+{id:'box8',name:'Box 8',type:'box',status:'libre',cap:4,x:20,y:205,w:135,h:120,note:'Disponible ahora'},
+{id:'mesas2',name:'Mesas grupales B',type:'mesa',status:'libre',cap:18,x:175,y:380,w:180,h:120,note:'Mesas para estudio grupal'},
+{id:'mesas3',name:'Mesas grupales C',type:'mesa',status:'reservado',cap:16,x:365,y:380,w:180,h:120,note:'Alta demanda en parciales'}
+];
+let selected=null,activeFilter='todos';
+function render(){
+ const z=document.getElementById('zones');z.innerHTML='';
+ spaces.forEach(s=>{if(activeFilter!=='todos'&&s.status!==activeFilter)return;const el=document.createElement('div');el.className=`zone ${s.type} ${s.status} ${selected===s.id?'selected':''}`;el.style.cssText=`left:${s.x}px;top:${s.y}px;width:${s.w}px;height:${s.h}px`;el.onclick=()=>selectSpace(s.id);el.innerHTML=`<div>${s.name}<br><small>${label(s.status)}</small></div>`;z.appendChild(el)});
+ renderReservations(); fillAdmin();
+}
+function selectSpace(id){selected=id;const s=spaces.find(a=>a.id===id);document.getElementById('detail').innerHTML=`<h3>${s.name}</h3><div class="infoRow"><span>Estado</span><strong class="state ${s.status}Text">${label(s.status)}</strong></div><div class="infoRow"><span>Capacidad</span><strong>${s.cap} personas</strong></div><div class="infoRow"><span>Tipo</span><strong>${s.type==='box'?'Box cerrado':'Mesa abierta'}</strong></div><div class="infoRow"><span>Nota</span><strong>${s.note}</strong></div><label>Reservar horario</label><input type="time" id="reserveTime" value="17:00"><button class="reserveBtn primary" onclick="reserve('${s.id}')">Reservar este espacio</button>`;render();}
+function reserve(id){const s=spaces.find(a=>a.id===id);if(s.status==='ocupado'){showToast('Ese espacio está ocupado. Probá con uno libre.');return}s.status='reservado';const t=document.getElementById('reserveTime')?.value||'17:00';s.note=`Reservado para las ${t}`;selectSpace(id);showToast(`${s.name} reservado para las ${t}`)}
+function label(st){return st==='libre'?'Libre':st==='ocupado'?'Ocupado':'Reservado'}
+function filterStatus(st){activeFilter=st;render()}
+function renderReservations(){const list=document.getElementById('reservationList');const items=spaces.filter(s=>s.status==='reservado');list.innerHTML=items.length?items.map(s=>`<div class="mini"><div><strong>${s.name}</strong><span>${s.note}</span></div><b>QR</b></div>`).join(''):'<p>No hay reservas próximas.</p>'}
+function fillAdmin(){const sel=document.getElementById('adminBox');const current=sel.value;sel.innerHTML=spaces.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');if(current)sel.value=current}
+function openAdmin(){document.getElementById('adminModal').classList.add('open');fillAdmin()}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('open')}
+function saveAdmin(){const id=document.getElementById('adminBox').value;const s=spaces.find(a=>a.id===id);s.status=document.getElementById('adminState').value;s.note=document.getElementById('adminNote').value||'Actualizado desde panel admin';closeAdmin();selected=id;selectSpace(id);showToast('Cambio guardado correctamente')}
+function showToast(txt){const t=document.getElementById('toast');t.textContent=txt;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+setInterval(()=>{document.getElementById('liveClock').textContent=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})+' · en vivo'},1000);
+render();
+</script>
+</body>
+</html>
