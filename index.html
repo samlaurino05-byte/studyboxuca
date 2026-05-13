@@ -3,170 +3,138 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>StudyBox UCA | Reserva de boxes</title>
+<title>StudyBox UCA | Mobile</title>
 <style>
 :root{
-  --navy:#071b3d;
-  --navy2:#082653;
-  --blue:#2563eb;
-  --text:#071831;
-  --muted:#667085;
-  --line:#d8e1ec;
-  --wall:#071831;
-  --floor:#f7f9fc;
-  --libre:#16a34a;
-  --ocupado:#ef4444;
-  --reservado:#f59e0b;
-  --mesa:#7c3aed;
+  --navy:#071b3d;--navy2:#0b2a5c;--blue:#2563eb;--text:#071831;--muted:#667085;--line:#e2e8f0;
+  --libre:#16a34a;--ocupado:#ef4444;--reservado:#f59e0b;--mesa:#7c3aed;--bg:#f5f7fb;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:radial-gradient(circle at top left,#123a78 0,#071b3d 38%,#04142f 100%);
-  color:white;
-  min-height:100vh;
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+.header{background:linear-gradient(135deg,var(--navy),#082b63);color:white;padding:18px 16px 20px;border-radius:0 0 24px 24px;box-shadow:0 12px 30px #071b3d30;position:sticky;top:0;z-index:20}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:white;color:var(--navy);display:grid;place-items:center;font-weight:950;font-size:20px}h1{font-size:23px;line-height:1;margin:0;font-weight:950;letter-spacing:-.5px}.subtitle{margin:4px 0 0;color:#d8e6f8;font-size:13px}.live{background:#ffffff18;border:1px solid #ffffff25;border-radius:14px;padding:8px 10px;text-align:right;font-size:12px;white-space:nowrap}.live b{display:block}.live span{color:#86efac;font-weight:900}.filters{display:flex;gap:8px;overflow-x:auto;padding-top:16px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}.filter{border:1px solid #ffffff28;background:#ffffff12;color:white;padding:10px 14px;border-radius:999px;font-weight:800;white-space:nowrap}.filter.active{background:white;color:var(--navy)}
+.app{width:min(1160px,100%);margin:auto;padding:16px}.hero{background:white;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 12px 28px #0f172a0d;margin-bottom:14px}.sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.sectionTitle h2{margin:0;font-size:20px;letter-spacing:-.3px}.legend{display:flex;gap:10px;flex-wrap:wrap;color:#475467;font-size:13px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:5px}.d-libre{background:var(--libre)}.d-reservado{background:var(--reservado)}.d-ocupado{background:var(--ocupado)}.d-mesa{background:var(--mesa)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}.map{background:#fbfcfe;border:1px solid var(--line);border-radius:18px;padding:12px}.gridMap{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:104px;gap:10px}.space{border:2px solid var(--line);border-radius:14px;background:white;padding:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:.18s;box-shadow:0 8px 18px #0f172a0a}.space:hover{transform:translateY(-2px)}.space.selected{outline:4px solid #93c5fd}.space strong{font-size:16px}.space small{font-weight:900;margin-top:5px}.space.libre{border-color:var(--libre);background:linear-gradient(135deg,#fff,#f0fdf4)}.space.ocupado{border-color:var(--ocupado);background:linear-gradient(135deg,#fff,#fee2e2)}.space.reservado{border-color:var(--reservado);background:linear-gradient(135deg,#fff,#fff7ed)}.space.mesa{border-color:var(--mesa);background:linear-gradient(135deg,#fff,#f3e8ff)}.space.libre small{color:var(--libre)}.space.ocupado small{color:#dc2626}.space.reservado small{color:#d97706}.space.mesa small{color:var(--mesa)}.wide{grid-column:span 2}.tall{grid-row:span 2}.service{background:#f1f5f9;border:1px dashed #cbd5e1;color:#334155;cursor:default}.service:hover{transform:none}
+.side{display:flex;flex-direction:column;gap:14px}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 28px #0f172a0d}.detailHead{display:flex;align-items:center;gap:12px;margin-bottom:14px}.icon{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:grid;place-items:center;color:white;font-size:23px}.detailHead h3{margin:0;font-size:23px;letter-spacing:-.4px}.row{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #edf2f7;padding:12px 0;font-size:15px}.row strong{text-align:right}.stateLibre{color:var(--libre)}.stateOcupado{color:#dc2626}.stateReservado{color:#d97706}.formLabel{font-size:15px;margin:14px 0 8px;color:#344054}select{width:100%;padding:14px;border:1px solid #d8e1ec;border-radius:13px;background:white;color:var(--text);font-size:15px}.reserve{width:100%;margin-top:12px;border:0;border-radius:13px;padding:15px;background:var(--blue);color:white;font-weight:900;font-size:15px;box-shadow:0 10px 22px #2563eb30}.reserve:disabled{background:#94a3b8;box-shadow:none}.reservation{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:14px;padding:13px;margin-top:10px}.reservation strong{display:block}.reservation span{font-size:13px;color:#475467}.qr{font-weight:950;background:#f1f5f9;border-radius:10px;padding:9px 10px}.adminBtn{position:fixed;right:18px;bottom:18px;border:0;border-radius:999px;background:var(--blue);color:white;padding:14px 16px;font-weight:900;box-shadow:0 12px 30px #2563eb45}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#111827;color:white;padding:13px 16px;border-radius:999px;display:none;z-index:50;font-size:14px}.toast.show{display:block}
+.mobileList{display:none}.spaceList{display:grid;gap:10px}.spaceItem{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:16px;background:white;padding:14px;box-shadow:0 8px 18px #0f172a08}.spaceItem .left{display:flex;align-items:center;gap:12px}.badge{width:12px;height:44px;border-radius:999px}.spaceItem strong{display:block}.spaceItem span{font-size:13px;color:#475467}.pill{font-size:12px;font-weight:950;border-radius:999px;padding:7px 9px}.pill.libre{background:#dcfce7;color:#166534}.pill.ocupado{background:#fee2e2;color:#991b1b}.pill.reservado{background:#ffedd5;color:#9a3412}.pill.mesa{background:#ede9fe;color:#5b21b6}
+@media(max-width:850px){
+  body{background:#f6f8fb}.app{padding:12px}.header{padding:14px 14px 16px;border-radius:0 0 22px 22px}.logo{width:42px;height:42px;font-size:18px}h1{font-size:21px}.subtitle{font-size:12px}.live{font-size:11px;padding:7px 9px}.layout{display:block}.hero{padding:14px;border-radius:18px}.desktopMap{display:none}.mobileList{display:block}.side{margin-top:12px}.sectionTitle{display:block}.sectionTitle h2{font-size:19px;margin-bottom:8px}.legend{font-size:12px}.card{padding:16px;border-radius:18px}.detailHead h3{font-size:21px}.adminBtn{display:none}.filters{padding-top:13px}.filter{padding:9px 12px;font-size:13px}.reservation{padding:12px}.row{font-size:14px}.reserve{position:sticky;bottom:10px;z-index:10}
 }
-.app{width:min(1540px,100%);margin:auto;padding:24px 18px 0}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
-.brand{display:flex;align-items:center;gap:14px}
-.logo{width:56px;height:56px;border-radius:16px;background:white;color:var(--navy);display:grid;place-items:center;font-weight:950;font-size:23px;box-shadow:0 14px 30px #0004}
-h1{margin:0;font-size:31px;line-height:1;font-weight:900;letter-spacing:-.8px}.brand p{margin:6px 0 0;color:#d8e6f8;font-size:17px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-button{border:0;border-radius:13px;padding:14px 18px;font-weight:850;cursor:pointer;transition:.18s;font-size:14px}
-button:hover{transform:translateY(-1px)}
-.ghost{background:#0d2a5a;color:white;border:1px solid #ffffff2f;box-shadow:inset 0 0 0 1px #ffffff0e}
-.white{background:white;color:var(--navy);box-shadow:0 10px 24px #0002}
-.primary{background:linear-gradient(135deg,#3478ff,#2258e8);color:white;box-shadow:0 12px 28px #1d4ed855}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:18px;align-items:start}
-.card{background:#fffffff4;color:var(--text);border-radius:22px;box-shadow:0 16px 46px #0002;border:1px solid #ffffff80}
-.mapCard{padding:22px}.mapHeader{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}.mapHeader h2,.panel h2{margin:0;font-size:24px;letter-spacing:-.4px}.legend{display:flex;gap:18px;flex-wrap:wrap;color:#344054;font-size:14px}.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px;vertical-align:-1px}.d-libre{background:var(--libre)}.d-ocupado{background:var(--ocupado)}.d-reservado{background:var(--reservado)}.d-mesa{background:var(--mesa)}
-.mapFrame{background:#fff;border:1px solid #d8e1ec;border-radius:16px;padding:22px;overflow:auto}.floor{position:relative;width:1060px;height:650px;background:linear-gradient(135deg,#fbfcfe,#f3f6fa);border:8px solid var(--wall);box-shadow:inset 0 0 0 1px #a9b6c6;overflow:hidden}.floor::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#e8edf3 1px,transparent 1px),linear-gradient(90deg,#e8edf3 1px,transparent 1px);background-size:32px 32px;opacity:.45;pointer-events:none}.innerWall{position:absolute;background:transparent;border:5px solid var(--wall);opacity:.94}.thinWall{position:absolute;background:var(--wall);opacity:.88}.service{position:absolute;border:4px solid var(--wall);background:#eef2f7;color:#102033;display:grid;place-items:center;text-align:center;font-weight:900}.service small{display:block;font-weight:700;color:#667085;margin-top:2px}.zone{position:absolute;border:3px solid;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:8px;background:#fff;cursor:pointer;transition:.2s;box-shadow:0 8px 18px #0f172a12,inset 0 0 0 2px #ffffffd9;color:var(--text);font-weight:900;overflow:hidden}.zone:hover{transform:scale(1.018);z-index:8}.zone.selected{outline:5px solid #38bdf8;z-index:9}.zone .name{font-size:18px;line-height:1.08}.zone .status{font-size:14px;margin-top:8px}.libre{border-color:var(--libre);background:linear-gradient(135deg,#ffffff,#f0fdf4)}.ocupado{border-color:var(--ocupado);background:linear-gradient(135deg,#ffffff,#fee2e2)}.reservado{border-color:var(--reservado);background:linear-gradient(135deg,#ffffff,#fff7ed)}.mesa{border-color:var(--mesa);background:linear-gradient(135deg,#ffffff,#f3e8ff)}.libre .status{color:var(--libre)}.ocupado .status{color:#dc2626}.reservado .status{color:#d97706}.mesa .status{color:var(--mesa)}
-.door{position:absolute;width:48px;height:48px;border:2px solid #6b7280;border-left:0;border-bottom:0;border-radius:0 48px 0 0;background:#ffffffcc}.door.left{transform:rotate(180deg)}.door.down{transform:rotate(90deg)}.window{position:absolute;height:7px;background:#cbd5e1;border:1px solid #94a3b8;border-radius:999px}.tableIcon{display:flex;justify-content:center;gap:8px;margin-top:14px}.tableIcon i{width:30px;height:26px;border:1.8px solid #8a94a6;background:#f8fafc;display:block}.side{display:flex;flex-direction:column;gap:18px}.panel{padding:20px}.panelTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.live{font-size:13px;line-height:1.1;background:#f7f9fc;border-radius:16px;padding:10px 12px;text-align:right;color:#344054}.live b{display:block}.live span{color:#16a34a;font-weight:900}.detailBox{margin-top:18px;background:white;border:1px solid #e2e8f0;border-radius:18px;padding:20px;box-shadow:0 12px 28px #0f172a12}.detailTitle{display:flex;align-items:center;gap:14px;margin-bottom:18px}.iconCircle{width:52px;height:52px;border-radius:18px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:grid;place-items:center;color:white;font-size:24px}.detailBox h3{margin:0;font-size:26px;line-height:1.05;letter-spacing:-.6px}.infoRow{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #e5e7eb;padding:13px 0;font-size:16px}.infoRow strong{text-align:right}.infoRow:last-of-type{border-bottom:0}.state{font-weight:900}.state.libreText{color:var(--libre)}.state.ocupadoText{color:#dc2626}.state.reservadoText{color:#d97706}select{width:100%;padding:15px 16px;border:1px solid #d8e1ec;border-radius:13px;background:white;color:var(--text);font-size:16px;margin:10px 0 14px}.reserveBtn{width:100%;padding:16px;border-radius:13px;background:#2563eb;color:white;box-shadow:0 10px 22px #2563eb40}.miniList{display:grid;gap:0;margin-top:14px;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden}.mini{display:flex;align-items:center;justify-content:space-between;padding:16px;background:#fff;border-bottom:1px solid #e2e8f0}.mini:last-child{border-bottom:0}.mini strong{display:block;font-size:17px}.mini span{color:#475467;font-size:14px}.qr{background:#f3f6fa;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;font-weight:900;color:#0b1f3a}.adminToggle{position:fixed;right:20px;bottom:18px;width:54px;height:54px;border-radius:50%;background:white;color:var(--navy);z-index:20;box-shadow:0 12px 32px #0004}.modal{display:none;position:fixed;inset:0;background:#0009;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalBox{background:white;color:var(--text);border-radius:24px;padding:22px;width:min(540px,100%);box-shadow:0 24px 60px #0005}.modalBox h2{margin-top:0}.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.modalBox input,.modalBox select{width:100%;padding:13px;border:1px solid #d8e1ec;border-radius:12px;margin:6px 0 12px}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%);background:#111827;color:white;padding:14px 18px;border-radius:999px;box-shadow:0 15px 35px #0005;display:none;z-index:50}.toast.show{display:block}.footer{display:flex;justify-content:space-between;gap:12px;padding:24px 4px;color:#dbeafe;font-size:14px}
-@media(max-width:1120px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr}.mapFrame{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.actions{justify-content:flex-start}}@media(max-width:760px){.app{padding:14px}.side{display:flex}.mapCard,.panel{padding:16px}.mapHeader{align-items:flex-start;flex-direction:column}.floor{transform:scale(.72);transform-origin:top left;margin-bottom:-180px}.mapFrame{max-height:520px}.brand p{font-size:14px}h1{font-size:26px}}@media(max-width:540px){.floor{transform:scale(.52);margin-bottom:-310px}.actions button{padding:11px 13px}.adminGrid{grid-template-columns:1fr}.footer{flex-direction:column}.mapHeader h2,.panel h2{font-size:21px}}
+@media(max-width:420px){.live{display:none}.brand{gap:10px}.header{padding-left:12px;padding-right:12px}.app{padding:10px}.spaceItem{padding:12px}.detailHead{align-items:flex-start}.icon{width:42px;height:42px;border-radius:14px}.row{padding:10px 0}.card{padding:14px}}
 </style>
 </head>
 <body>
-<div class="app">
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">SB</div>
-      <div><h1>StudyBox UCA</h1><p>Reserva inteligente de boxes y espacios de estudio</p></div>
-    </div>
-    <div class="actions">
-      <button class="ghost" onclick="filterStatus('todos')">Todos</button>
-      <button class="white" onclick="filterStatus('libre')">Libres</button>
-      <button class="ghost" onclick="filterStatus('ocupado')">Ocupados</button>
-      <button class="ghost" onclick="filterStatus('reservado')">Reservados</button>
-      <button class="ghost" onclick="filterStatus('mesa')">Mesas</button>
-      <button class="primary" onclick="openAdmin()">⚙ Panel admin</button>
-    </div>
-  </header>
+<header class="header">
+  <div class="top">
+    <div class="brand"><div class="logo">SB</div><div><h1>StudyBox UCA</h1><p class="subtitle">Reservá tu espacio de estudio</p></div></div>
+    <div class="live"><b id="clock">--:--</b><span>● en vivo</span></div>
+  </div>
+  <div class="filters">
+    <button class="filter active" data-filter="todos">Todos</button>
+    <button class="filter" data-filter="libre">Libres</button>
+    <button class="filter" data-filter="reservado">Reservados</button>
+    <button class="filter" data-filter="ocupado">Ocupados</button>
+    <button class="filter" data-filter="mesa">Mesas</button>
+  </div>
+</header>
 
-  <main class="layout">
-    <section class="card mapCard">
-      <div class="mapHeader">
-        <h2>Mapa interactivo · Biblioteca subsuelo</h2>
+<main class="app">
+  <div class="layout">
+    <section class="hero">
+      <div class="sectionTitle">
+        <h2>Biblioteca subsuelo</h2>
         <div class="legend"><span><i class="dot d-libre"></i>Libre</span><span><i class="dot d-reservado"></i>Reservado</span><span><i class="dot d-ocupado"></i>Ocupado</span><span><i class="dot d-mesa"></i>Mesas</span></div>
       </div>
-      <div class="mapFrame">
-        <div class="floor" id="floor">
-          <div class="window" style="left:45px;top:0;width:90px"></div><div class="window" style="left:355px;top:0;width:95px"></div><div class="window" style="left:830px;bottom:0;width:100px"></div>
-          <div class="thinWall" style="left:120px;top:0;width:6px;height:170px"></div><div class="thinWall" style="left:280px;top:0;width:6px;height:170px"></div><div class="thinWall" style="left:445px;top:0;width:6px;height:170px"></div><div class="thinWall" style="left:760px;top:0;width:6px;height:170px"></div>
-          <div class="thinWall" style="left:125px;top:165px;width:155px;height:6px"></div><div class="thinWall" style="left:285px;top:165px;width:160px;height:6px"></div><div class="thinWall" style="left:450px;top:165px;width:310px;height:6px"></div><div class="thinWall" style="left:765px;top:165px;width:120px;height:6px"></div>
-          <div class="thinWall" style="left:0;top:170px;width:130px;height:6px"></div><div class="thinWall" style="left:0;top:470px;width:165px;height:6px"></div><div class="thinWall" style="left:160px;top:470px;width:6px;height:180px"></div>
-          <div class="thinWall" style="right:0;top:170px;width:165px;height:6px"></div><div class="thinWall" style="right:165px;top:170px;width:6px;height:302px"></div><div class="thinWall" style="right:0;top:320px;width:165px;height:6px"></div><div class="thinWall" style="right:165px;top:470px;width:6px;height:180px"></div>
-          <div class="innerWall" style="left:215px;top:235px;width:215px;height:170px"></div><div class="thinWall" style="left:305px;top:235px;width:6px;height:170px"></div><div class="thinWall" style="left:215px;top:318px;width:215px;height:5px"></div>
-          <div class="service" style="left:225px;top:245px;width:80px;height:75px">🚻</div>
-          <div class="service" style="left:312px;top:245px;width:108px;height:150px">Escalera<small>núcleo</small></div>
-          <div class="service" style="left:0;bottom:0;width:160px;height:174px">Escalera</div>
-          <div class="door down" style="left:145px;top:150px"></div><div class="door down" style="left:330px;top:150px"></div><div class="door down" style="left:635px;top:150px"></div><div class="door down" style="left:885px;top:156px"></div><div class="door left" style="left:115px;top:220px"></div><div class="door left" style="right:145px;top:333px"></div><div class="door down" style="left:122px;top:448px"></div><div class="door down" style="left:628px;top:455px"></div><div class="door down" style="left:785px;top:455px"></div>
-          <div id="zones"></div>
-        </div>
+
+      <div class="map desktopMap">
+        <div class="gridMap" id="desktopMap"></div>
+      </div>
+
+      <div class="mobileList">
+        <div class="spaceList" id="mobileList"></div>
       </div>
     </section>
 
     <aside class="side">
-      <section class="card panel">
-        <div class="panelTop"><h2>Detalle del espacio</h2><div class="live"><b id="clock">--:--</b><span>• en vivo</span></div></div>
-        <div class="detailBox" id="detail"><p>Seleccioná un box o mesa del mapa para ver disponibilidad, capacidad y reservar.</p></div>
-      </section>
-      <section class="card panel">
-        <h2>Próximas reservas</h2>
-        <div class="miniList" id="nextList"></div>
+      <section class="card" id="detailCard"></section>
+      <section class="card">
+        <div class="sectionTitle"><h2>Próximas reservas</h2></div>
+        <div class="reservation"><div><strong>Box 5</strong><span>Reservado para 18:00</span></div><div class="qr">QR</div></div>
+        <div class="reservation"><div><strong>Box 4</strong><span>Reservado para 17:00</span></div><div class="qr">QR</div></div>
+        <div class="reservation"><div><strong>Mesas grupales C</strong><span>Reservado para 16:30</span></div><div class="qr">QR</div></div>
       </section>
     </aside>
-  </main>
-  <footer class="footer"><span>© 2026 StudyBox UCA · Demo académica</span><span>Desarrollado para estudiantes, por estudiantes ♡</span></footer>
-</div>
-
-<button class="adminToggle" onclick="openAdmin()">⚙</button>
-<div class="modal" id="adminModal">
-  <div class="modalBox">
-    <h2>Panel administrativo</h2>
-    <p>Actualizá el estado de un espacio para simular cambios en tiempo real.</p>
-    <div class="adminGrid">
-      <label>Espacio<select id="adminSpace"></select></label>
-      <label>Estado<select id="adminStatus"><option value="libre">Libre</option><option value="ocupado">Ocupado</option><option value="reservado">Reservado</option></select></label>
-    </div>
-    <label>Nota<input id="adminNote" placeholder="Ej: reservado para trabajo grupal" /></label>
-    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px"><button class="ghost" style="color:#071831;background:#eef2f7" onclick="closeAdmin()">Cancelar</button><button class="primary" onclick="saveAdmin()">Guardar cambio</button></div>
   </div>
-</div>
-<div class="toast" id="toast"></div>
+</main>
+
+<button class="adminBtn" onclick="alert('Panel admin oculto en mobile. En versión desktop se podría activar.')">Panel admin</button>
+<div class="toast" id="toast">Reserva creada correctamente</div>
+
 <script>
-const spaces=[
- {id:1,name:'Box 1',type:'Box privado',status:'libre',cap:'4 personas',note:'Ideal para grupos chicos',x:8,y:8,w:165,h:150},
- {id:2,name:'Box 2',type:'Box privado',status:'ocupado',cap:'4 personas',note:'Ocupado actualmente',x:176,y:8,w:155,h:150},
- {id:3,name:'Box 3',type:'Box privado',status:'libre',cap:'4 personas',note:'Zona silenciosa',x:336,y:8,w:170,h:150},
- {id:4,name:'Mesas individuales A',type:'Mesa abierta',status:'libre',cap:'12 personas',note:'Zona silenciosa',kind:'mesa',x:512,y:8,w:305,h:150,icons:2},
- {id:5,name:'Box 5',type:'Box privado',status:'reservado',cap:'6 personas',note:'Reservado para las 18:00',x:825,y:8,w:176,h:150},
- {id:10,name:'Box 10',type:'Box privado',status:'libre',cap:'4 personas',note:'Disponible',x:8,y:178,w:120,h:210},
- {id:6,name:'Box 6',type:'Box privado',status:'libre',cap:'5 personas',note:'Disponible',x:900,y:178,w:150,h:145},
- {id:8,name:'Box 8',type:'Box privado',status:'libre',cap:'5 personas',note:'Disponible',x:900,y:330,w:150,h:145},
- {id:11,name:'Mesas grupales B',type:'Mesa abierta',status:'libre',cap:'10 personas',note:'Sector colaborativo',kind:'mesa',x:168,y:478,w:225,h:160,icons:2},
- {id:12,name:'Mesas grupales C',type:'Mesa abierta',status:'reservado',cap:'10 personas',note:'Reservado para las 16:30',kind:'mesa',x:400,y:478,w:245,h:160,icons:2},
- {id:7,name:'Box 4',type:'Box privado',status:'reservado',cap:'4 personas',note:'Reservado para las 17:00',x:650,y:478,w:158,h:160},
- {id:9,name:'Box 7',type:'Box privado',status:'ocupado',cap:'4 personas',note:'Ocupado actualmente',x:815,y:478,w:235,h:160}
+const spaces = [
+  {id:1,name:'Box 1',type:'Box individual',status:'libre',cap:'4 personas',note:'Zona silenciosa'},
+  {id:2,name:'Box 2',type:'Box individual',status:'ocupado',cap:'4 personas',note:'En uso'},
+  {id:3,name:'Box 3',type:'Box individual',status:'libre',cap:'4 personas',note:'Zona silenciosa'},
+  {id:4,name:'Mesas individuales A',type:'Mesa abierta',status:'mesa',cap:'12 personas',note:'Zona silenciosa',wide:true},
+  {id:5,name:'Box 5',type:'Box individual',status:'reservado',cap:'4 personas',note:'Reservado hasta 18:00'},
+  {id:10,name:'Box 10',type:'Box individual',status:'libre',cap:'4 personas',note:'Cerca del acceso'},
+  {id:'bath',name:'Baños',service:true},
+  {id:'stairs',name:'Escalera',service:true},
+  {id:'empty1',name:'Área común',service:true},
+  {id:6,name:'Box 6',type:'Box individual',status:'libre',cap:'4 personas',note:'Zona lateral'},
+  {id:'empty2',name:'Área común',service:true},
+  {id:11,name:'Mesas grupales B',type:'Mesa grupal',status:'mesa',cap:'10 personas',note:'Ideal para trabajos prácticos',wide:true},
+  {id:12,name:'Mesas grupales C',type:'Mesa grupal',status:'reservado',cap:'10 personas',note:'Reservado para 16:30',wide:true},
+  {id:4,name:'Box 4',type:'Box individual',status:'reservado',cap:'4 personas',note:'Reservado para 17:00'},
+  {id:7,name:'Box 7',type:'Box individual',status:'ocupado',cap:'4 personas',note:'En uso'}
 ];
-let selected=spaces[3];
-const statusLabel={libre:'Libre',ocupado:'Ocupado',reservado:'Reservado'};
-function renderZones(filter='todos'){
- const holder=document.getElementById('zones'); holder.innerHTML='';
- spaces.forEach(s=>{
-  const el=document.createElement('div');
-  const visible=filter==='todos'||s.status===filter||(filter==='mesa'&&s.kind==='mesa');
-  el.className=`zone ${s.kind==='mesa'?'mesa':s.status} ${selected.id===s.id?'selected':''}`;
-  el.style.cssText=`left:${s.x}px;top:${s.y}px;width:${s.w}px;height:${s.h}px;display:${visible?'flex':'none'}`;
-  let icons=''; if(s.icons){icons='<div class="tableIcon"><i></i><i></i><i></i></div>'.repeat(s.icons)}
-  el.innerHTML=`<div><div class="name">${s.name}</div><div class="status">${statusLabel[s.status]}</div>${icons}</div>`;
-  el.onclick=()=>{selected=s; renderZones(filter); renderDetail();};
-  holder.appendChild(el);
- });
+let selected = spaces.find(s=>!s.service && s.name==='Mesas individuales A');
+let currentFilter = 'todos';
+
+function statusText(s){return s==='libre'?'Libre':s==='ocupado'?'Ocupado':s==='reservado'?'Reservado':'Mesas'}
+function filtered(){return spaces.filter(s => s.service || currentFilter==='todos' || s.status===currentFilter)}
+
+function render(){
+  const desktop = document.getElementById('desktopMap');
+  const mobile = document.getElementById('mobileList');
+  desktop.innerHTML = '';
+  mobile.innerHTML = '';
+  filtered().forEach(s=>{
+    if(s.service){
+      const div=document.createElement('div');div.className='space service';div.innerHTML=`<strong>${s.name}</strong>`;desktop.appendChild(div);return;
+    }
+    const d=document.createElement('button');
+    d.className=`space ${s.status} ${s.wide?'wide':''} ${selected.id===s.id&&selected.name===s.name?'selected':''}`;
+    d.innerHTML=`<strong>${s.name}</strong><small>${statusText(s.status)}</small>`;
+    d.onclick=()=>selectSpace(s);desktop.appendChild(d);
+
+    const item=document.createElement('button');
+    item.className='spaceItem';
+    item.onclick=()=>selectSpace(s);
+    item.innerHTML=`<div class="left"><i class="badge" style="background:var(--${s.status==='mesa'?'mesa':s.status})"></i><div><strong>${s.name}</strong><span>${s.type} · ${s.cap}</span></div></div><div class="pill ${s.status}">${statusText(s.status)}</div>`;
+    mobile.appendChild(item);
+  });
+  renderDetail();
 }
+function selectSpace(s){selected=s;render();document.getElementById('detailCard').scrollIntoView({behavior:'smooth',block:'nearest'});} 
 function renderDetail(){
- const detail=document.getElementById('detail');
- const cls=selected.status+'Text';
- detail.innerHTML=`<div class="detailTitle"><div class="iconCircle">${selected.kind==='mesa'?'▦':'□'}</div><h3>${selected.name}</h3></div>
- <div class="infoRow"><span>Estado</span><strong class="state ${cls}">${statusLabel[selected.status]}</strong></div>
- <div class="infoRow"><span>Capacidad</span><strong>${selected.cap}</strong></div>
- <div class="infoRow"><span>Tipo</span><strong>${selected.type}</strong></div>
- <div class="infoRow"><span>Nota</span><strong>${selected.note}</strong></div>
- <label style="display:block;margin-top:16px">Reservar horario</label><select id="reserveTime"><option>05:00 p.m.</option><option>05:30 p.m.</option><option>06:00 p.m.</option><option>06:30 p.m.</option></select>
- <button class="reserveBtn" onclick="reserveSelected()">Reservar este espacio</button>`;
+  const cls = selected.status==='libre'?'stateLibre':selected.status==='ocupado'?'stateOcupado':'stateReservado';
+  const canReserve = selected.status==='libre' || selected.status==='mesa';
+  document.getElementById('detailCard').innerHTML = `
+    <div class="detailHead"><div class="icon">${selected.status==='mesa'?'▦':'□'}</div><div><h3>${selected.name}</h3><span style="color:#667085;font-size:14px">Detalle del espacio</span></div></div>
+    <div class="row"><span>Estado</span><strong class="${cls}">${statusText(selected.status)}</strong></div>
+    <div class="row"><span>Capacidad</span><strong>${selected.cap}</strong></div>
+    <div class="row"><span>Tipo</span><strong>${selected.type}</strong></div>
+    <div class="row"><span>Nota</span><strong>${selected.note}</strong></div>
+    <div class="formLabel">Reservar horario</div>
+    <select id="hour"><option>15:00</option><option>16:00</option><option selected>17:00</option><option>18:00</option><option>19:00</option></select>
+    <button class="reserve" ${canReserve?'':'disabled'} onclick="reserveSpace()">${canReserve?'Reservar este espacio':'No disponible'}</button>`;
 }
-function renderNext(){
- const next=document.getElementById('nextList');
- next.innerHTML=`<div class="mini"><div><strong>Box 5</strong><span>Reservado para 18:00</span></div><div class="qr">QR</div></div><div class="mini"><div><strong>Box 4</strong><span>Reservado para 17:00</span></div><div class="qr">QR</div></div><div class="mini"><div><strong>Mesas grupales C</strong><span>Reservado para 16:30</span></div><div class="qr">QR</div></div>`;
+function reserveSpace(){
+  const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);
+  selected.status='reservado';selected.note='Reservado para '+document.getElementById('hour').value;render();
 }
-function filterStatus(status){renderZones(status)}
-function reserveSelected(){ if(selected.status==='ocupado'){toast('Este espacio está ocupado ahora.');return;} selected.status='reservado'; selected.note='Reservado desde la web'; renderZones(); renderDetail(); toast('Reserva confirmada. Tu QR ya está generado.'); }
-function openAdmin(){ document.getElementById('adminModal').classList.add('open'); const sel=document.getElementById('adminSpace'); sel.innerHTML=spaces.map(s=>`<option value="${s.id}">${s.name}</option>`).join(''); sel.value=selected.id; document.getElementById('adminStatus').value=selected.status; document.getElementById('adminNote').value=selected.note; }
-function closeAdmin(){document.getElementById('adminModal').classList.remove('open')}
-function saveAdmin(){ const id=+document.getElementById('adminSpace').value; const s=spaces.find(x=>x.id===id); s.status=document.getElementById('adminStatus').value; s.note=document.getElementById('adminNote').value||s.note; selected=s; closeAdmin(); renderZones(); renderDetail(); toast('Cambio aplicado en el mapa.'); }
-function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
-function tick(){ const now=new Date(); document.getElementById('clock').textContent=now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'}); }
-setInterval(tick,1000); tick(); renderZones(); renderDetail(); renderNext();
+document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentFilter=btn.dataset.filter;render();});
+function clock(){document.getElementById('clock').textContent=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});}clock();setInterval(clock,30000);render();
 </script>
 </body>
 </html>
